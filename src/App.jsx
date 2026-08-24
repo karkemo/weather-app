@@ -19,8 +19,24 @@ function App() {
       return `${dayName}, ${month} ${dayNumber}, ${year}`
     }
 
-    setCurrentDate(getFormattedDate())
-  }, [])
+    setCurrentDate(getFormattedDate());
+  }, []);
+
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then((res) => {
+        if (!res.ok) throw new Error('Location lookup failed');
+        return res.json();
+      })
+      .then((data) => {
+        if (data.city) {
+          setSearchCity(data.city);
+        }
+      })
+      .catch((err) => {
+        console.warn('Could not auto-detect location, falling back to Cairo', err);
+      });
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController()
@@ -38,7 +54,8 @@ function App() {
         setWeather(data)
       } catch (error) {
         if (error.name !== 'AbortError') {
-          console.error('Error while fetching weather data', error)
+          console.error('Error while fetching weather data', error);
+          alert("Place not found.");
         }
       } finally {
         setLoading(false)
@@ -58,7 +75,7 @@ function App() {
   }
 
   const getIconUrl = (iconName) => `/icons/${iconName}.svg`;
-  const isClearNight = (iconName) => iconName === 'clear-night' || iconName?.toLowerCase().includes('night');
+  const isClearNight = (iconName) => iconName === 'clear-night';
 
   if (loading && !weather) {
     return <div className="text-white p-4">Loading...</div>
@@ -132,9 +149,8 @@ function App() {
                     <img
                       src={getIconUrl(weather.currentConditions.icon)}
                       alt={weather.currentConditions.conditions}
-                      className={`w-16 h-16 object-contain ${
-                        isClearNight(weather.currentConditions.icon) ? 'rotate-180' : ''
-                      }`}
+                      className={`w-16 h-16 object-contain ${isClearNight(weather.currentConditions.icon) ? 'rotate-180' : ''
+                        }`}
                     />
                     <p className='font-bold text-5xl italic'>
                       {Math.round(weather.currentConditions.temp)}°
@@ -187,9 +203,8 @@ function App() {
                         <img
                           src={getIconUrl(dayItem.icon)}
                           alt={dayItem.conditions}
-                          className={`w-12 h-12 object-contain ${
-                            isClearNight(dayItem.icon) ? 'rotate-180' : ''
-                          }`}
+                          className={`w-12 h-12 object-contain ${isClearNight(dayItem.icon) ? 'rotate-180' : ''
+                            }`}
                         />
 
                         <div className='w-full flex flex-row items-center justify-between px-1 text-xs sm:text-sm font-semibold'>
@@ -211,12 +226,11 @@ function App() {
                 {todaysHourlyForecast.map((hour, index) => (
                   <div key={index} className='flex flex-row items-center justify-between bg-black/5 dark:bg-white/5 p-3 rounded-lg'>
                     <div className='flex flex-row items-center justify-center gap-5'>
-                      <img 
-                        src={getIconUrl(hour.icon)} 
-                        alt={hour.conditions} 
-                        className={`w-8 h-8 object-contain ${
-                          isClearNight(hour.icon) ? 'rotate-180' : ''
-                        }`} 
+                      <img
+                        src={getIconUrl(hour.icon)}
+                        alt={hour.conditions}
+                        className={`w-8 h-8 object-contain ${isClearNight(hour.icon) ? 'rotate-180' : ''
+                          }`}
                       />
                       <span className='text-sm text-slate-700 dark:text-slate-200'>{hour.datetime.slice(0, 5)}</span>
                     </div>
