@@ -26,10 +26,6 @@ A modern, clean, and responsive weather application built with React and Vite, p
 
 ```text
 weather-app/
-├── design/
-│   ├── phone.jpg
-│   ├── web.jpg
-│   └── web_main.jpg
 ├── public/
 │   ├── icons/
 │   ├── favicon.svg
