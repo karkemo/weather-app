@@ -43,13 +43,13 @@ weather-app/
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
-├── .env.example
 ├── .gitignore
+├── eslint.config.js
 ├── index.html
-├── package.json
 ├── package-lock.json
-├── vite.config.js
-└── README.md
+├── package.json
+├── README.md
+└── vite.config.js
 ```
 
 ---
