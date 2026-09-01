@@ -38,7 +38,7 @@ export default function ThemeToggle() {
 
         {/* Sun Icon (Scales & fades out when dark mode active) */}
         <svg
-          className={`h-6 w-6 transform transition-all duration-300 ${isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'
+          className={`h-6 w-6 transform transition-all duration-300 ${isDark ? 'rotate-0 scale-100 opacity-100' : 'rotate-90 scale-0 opacity-0'
             }`}
           fill="none"
           viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ export default function ThemeToggle() {
 
         {/* Moon Icon (Scales & fades in when dark mode active) */}
         <svg
-          className={`absolute inset-0 h-6 w-6 transform transition-all duration-300 ${isDark ? 'rotate-180 scale-100 opacity-100' : 'rotate-0 scale-0 opacity-0'
+          className={`absolute inset-0 h-6 w-6 transform transition-all duration-300 ${isDark ? 'rotate-0 scale-0 opacity-0' : 'scale-100 opacity-100'
             }`}
           fill="none"
           viewBox="0 0 24 24"
