@@ -27,14 +27,13 @@ A modern, clean, and responsive weather application built with React and Vite, p
 ```text
 weather-app/
 ├── public/
-│   ├── icons/
-│   ├── favicon.svg
-│   ├── icons.svg
 │   └── logo.png
 ├── scripts/
 │   └── download-img.js
 ├── src/
 │   ├── assets/
+│   │   ├── icons/
+│   │   └── logo.png
 │   ├── components/
 │   ├── App.jsx
 │   ├── index.css
