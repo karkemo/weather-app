@@ -272,7 +272,7 @@ function App() {
       <nav className="w-full py-4 px-6 flex sm:flex-row flex-col items-center justify-between border-b border-black/10 dark:border-white/10">
         <div className="flex items-center gap-3">
           <img src={logoImg} alt="logo" className="h-12 w-auto" />
-          <p className="text-black dark:text-white font-bold text-xl">Weather</p>
+          <p className="text-black dark:text-white font-bold text-xl">Weatherify</p>
         </div>
         <div className="flex flex-row items-center justify-center gap-2">
           <ThemeToggle />
