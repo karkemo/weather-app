@@ -214,7 +214,7 @@ function App() {
     }
   }
 
-  const getIconUrl = (iconName) => `/icons/${iconName}.svg`
+  const getIconUrl = (iconName) => `${import.meta.env.BASE_URL}icons/${iconName}.svg`
   const isClearNight = (iconName) => iconName === 'clear-night'
 
   if (loading && !weather) {
@@ -230,7 +230,7 @@ function App() {
     <div className="transition-colors w-full min-h-screen dark:bg-[#02012b] bg-slate-200 text-white flex flex-col items-start justify-start gap-10 p-4">
       <nav className="w-full py-4 px-6 flex sm:flex-row flex-col items-center justify-between border-b border-black/10 dark:border-white/10">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="logo" className="h-12 w-auto" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="logo" className="h-12 w-auto" />
           <p className="text-black dark:text-white font-bold text-xl">Weather</p>
         </div>
         <div className="flex flex-row items-center justify-center gap-2">
